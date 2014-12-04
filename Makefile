@@ -1,8 +1,9 @@
-# $NetBSD: Makefile,v 1.128 2014/10/17 13:14:01 schmonz Exp $
+# $NetBSD: Makefile,v 1.130 2014/12/04 17:28:43 schmonz Exp $
 #
 
 DISTNAME=		ikiwiki_3.20141016
 PKGNAME=		${DISTNAME:S/_/-/}
+PKGREVISION=		1
 CATEGORIES=		www textproc
 MASTER_SITES=		${MASTER_SITE_DEBIAN:=pool/main/i/ikiwiki/}
 
@@ -10,6 +11,10 @@ MAINTAINER=		schmonz@NetBSD.org
 HOMEPAGE=		http://ikiwiki.info/
 COMMENT=		Flexible static site generator with dynamic features
 LICENSE=		gnu-gpl-v2
+
+# ./pm_filter /usr/pkg 3.20141016 /usr/pkg/lib/perl5/vendor_perl/5.20.0 < ikiwiki.in > ikiwiki.out
+# sh: ./pm_filter: not found
+MAKE_JOBS_SAFE=		no
 
 DEPENDS+=		p5-Text-Markdown-Discount-[0-9]*:../../textproc/p5-Text-Markdown-Discount
 DEPENDS+=		p5-URI-[0-9]*:../../www/p5-URI
